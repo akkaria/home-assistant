@@ -1,0 +1,70 @@
+title: Home
+
+resources:
+  - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v1.0.2b4
+    type: module
+
+background: >-
+  center / cover no-repeat
+  url("/local/background.jpg")
+  fixed
+views:
+  - title: Living
+    cards:
+      - type: "custom:compact-custom-header"
+        background_color: 'rgba(150, 150, 150, 0.2)'
+      - type: vertical-stack
+        cards:
+          - type: "custom:bignumber-card"
+            entity: sensor.time
+            scale: 50px
+          - type: weather-forecast
+            entity: weather.dark_sky
+          - type: glance
+            title: Air Conditioner
+            entities:
+              - entity: sensor.power
+                icon: mdi:power
+              - entity: sensor.fan_speed
+                icon: mdi:fan
+              - sensor.room_temp
+              - sensor.set_temp
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                title: Living Room Blinds
+                show_state: false
+                columns: 3
+                entities:
+                  - entity: script.open_living_blinds
+                    name: Open
+                    icon: mdi:chevron-up
+                    tap_action:
+                      action: toggle
+                  - entity: script.favorite_living_blinds
+                    name: Favorite
+                    icon: mdi:star
+                    tap_action:
+                      action: toggle
+                  - entity: script.open_living_blockout_blinds
+                    name: Open
+                    icon: mdi:chevron-up
+                    tap_action:
+                      action: toggle
+                  - entity: script.close_living_blinds
+                    name: Close
+                    icon: mdi:chevron-down
+                    tap_action:
+                      action: toggle
+                  - entity: script.stop_living_blinds
+                    name: Stop
+                    icon: mdi:stop
+                    tap_action:
+                      action: toggle
+                  - entity: script.close_living_blockout_blinds
+                    name: Close
+                    icon: mdi:chevron-down
+                    tap_action:
+                      action: toggle
